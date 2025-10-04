@@ -81,7 +81,7 @@ export default function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
                           {item.name}
                         </h3>
                         <p className="text-cyan-400 font-bold mb-2">
-                          ${item.price.toLocaleString()}
+                          KSh {item.price.toLocaleString()}
                         </p>
 
                         {/* Quantity Controls */}
@@ -115,7 +115,7 @@ export default function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
                           </svg>
                         </button>
                         <p className="text-white font-bold">
-                          ${(item.price * item.quantity).toLocaleString()}
+                          KSh {(item.price * item.quantity).toLocaleString()}
                         </p>
                       </div>
                     </div>
@@ -132,7 +132,7 @@ export default function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
               <div className="flex items-center justify-between text-xl font-bold">
                 <span className="text-white">Total:</span>
                 <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                  ${cartTotal.toLocaleString()}
+                  KSh {cartTotal.toLocaleString()}
                 </span>
               </div>
 

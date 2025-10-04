@@ -1,8 +1,8 @@
 export const seedProducts = [
   {
     name: 'NeuroLink Band',
-    description: 'Brain-computer interface wristband for controlling smart devices with thoughts',
-    price: 899,
+    description: 'Transform your reality with our revolutionary brain-computer interface wristband! Control your entire smart home, send messages, and navigate your digital world using only your thoughts. Features advanced neural sensors with 99.8% accuracy, real-time biometric monitoring, and seamless integration with all major platforms. Experience the future of human-technology interaction today!',
+    price: 89900,
     category: 'Wearables',
     image: '/products/neurolink-band.png',
     stock: 15,
@@ -10,8 +10,8 @@ export const seedProducts = [
   },
   {
     name: 'HoloDesk Pro',
-    description: 'Holographic workspace projector for 3D multi-monitor setup',
-    price: 2499,
+    description: 'Revolutionize your workspace with true 3D holographic displays! Project up to 6 ultra-HD virtual monitors in mid-air with crystal-clear 4K resolution per screen. Perfect for developers, designers, and power users. Features gesture control, eye-tracking navigation, and spatial audio integration. Boost your productivity by 300% while reducing desk clutter to zero!',
+    price: 249900,
     category: 'Workspace',
     image: '/products/holodesk-pro.png',
     stock: 8,
@@ -19,8 +19,8 @@ export const seedProducts = [
   },
   {
     name: 'QuantumCore CPU',
-    description: 'Personal quantum processor for advanced AI computing',
-    price: 4999,
+    description: 'Unleash unprecedented computing power with the world\'s first consumer quantum processor! Featuring 128 qubits for lightning-fast AI training, quantum simulation, and complex problem-solving. Run advanced machine learning models in seconds instead of hours. Perfect for researchers, AI developers, and tech enthusiasts who refuse to wait for tomorrow. Includes quantum cooling system and neural accelerator!',
+    price: 499900,
     category: 'Computing',
     image: '/products/quantumcore-cpu.png',
     stock: 5,
@@ -28,8 +28,8 @@ export const seedProducts = [
   },
   {
     name: 'AirClean Nano',
-    description: 'AI-powered air purifier with molecular-level filtration',
-    price: 599,
+    description: 'Breathe the purest air imaginable with molecular-level filtration technology! Our AI-powered system detects and eliminates 99.99% of pollutants, allergens, viruses, and bacteria at the nano-scale. Features real-time air quality monitoring, auto-adjustment based on room occupancy, and aromatherapy integration. Silent operation, energy-efficient, and designed for modern living spaces!',
+    price: 59900,
     category: 'Smart Home',
     image: '/products/airclean-nano.png',
     stock: 20,
@@ -37,8 +37,8 @@ export const seedProducts = [
   },
   {
     name: 'SmartGlass AR Pro',
-    description: 'Augmented reality glasses with AI assistant integration',
-    price: 1299,
+    description: 'Step into the augmented future with our ultra-lightweight AR glasses! Get real-time translations, navigation overlays, instant information lookup, and immersive gaming experiences—all while looking stylish. Features AI assistant with voice control, all-day battery life, prescription lens compatibility, and seamless smartphone integration. Your personal digital assistant, right before your eyes!',
+    price: 129900,
     category: 'Wearables',
     image: '/products/smartglass-ar-pro.png',
     stock: 12,
@@ -46,8 +46,8 @@ export const seedProducts = [
   },
   {
     name: 'BioPod Sleep System',
-    description: 'AI sleep optimization pod with biometric monitoring',
-    price: 3799,
+    description: 'Experience perfect sleep every night with advanced AI sleep optimization! This luxury pod monitors your heart rate, breathing, brain waves, and body temperature to create the ideal sleeping environment. Features dynamic climate control, noise cancellation, light therapy, and personalized wake-up sequences. Wake up refreshed, energized, and ready to conquer your day. Better sleep, better life!',
+    price: 379900,
     category: 'Health Tech',
     image: '/products/biopod-sleep.png',
     stock: 6,
@@ -55,8 +55,8 @@ export const seedProducts = [
   },
   {
     name: 'NanoBot Cleaner',
-    description: 'Microscopic cleaning robots for home surfaces',
-    price: 449,
+    description: 'Never clean again! Release millions of microscopic cleaning robots that autonomously sanitize every surface in your home. These intelligent nanobots eliminate bacteria, viruses, dust, and allergens at the microscopic level while being 100% safe for humans and pets. Self-charging, eco-friendly, and incredibly efficient. The last cleaning device you\'ll ever need!',
+    price: 44900,
     category: 'Smart Home',
     image: '/products/nanobot-cleaner.png',
     stock: 25,
@@ -64,8 +64,8 @@ export const seedProducts = [
   },
   {
     name: 'PhotonCharge Station',
-    description: 'Wireless quantum charging hub for all devices',
-    price: 299,
+    description: 'Charge all your devices wirelessly using quantum energy transfer! No more cables, no more searching for outlets. This sleek charging hub uses photon-based wireless technology to power up to 10 devices simultaneously from up to 3 meters away. Universal compatibility, ultra-fast charging speeds, and elegant design. Welcome to the cable-free future!',
+    price: 29900,
     category: 'Accessories',
     image: '/products/photoncharge-station.png',
     stock: 30,

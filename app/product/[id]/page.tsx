@@ -138,7 +138,7 @@ export default function ProductDetailPage() {
             {/* Price */}
             <div className="flex items-baseline gap-2">
               <span className="text-5xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                ${product.price.toLocaleString()}
+                KSh {product.price.toLocaleString()}
               </span>
             </div>
 

@@ -23,7 +23,7 @@ export default function CheckoutPage() {
     await new Promise((resolve) => setTimeout(resolve, 1500));
 
     // For hackathon: just show success and clear cart
-    alert(`🎉 Order placed successfully!\n\nThank you ${formData.name}!\nTotal: $${cartTotal.toLocaleString()}\n\nA confirmation email will be sent to ${formData.email}`);
+    alert(`🎉 Order placed successfully!\n\nThank you ${formData.name}!\nTotal: KSh ${cartTotal.toLocaleString()}\n\nA confirmation email will be sent to ${formData.email}`);
     
     clearCart();
     setIsProcessing(false);
@@ -162,7 +162,7 @@ export default function CheckoutPage() {
                     </div>
                     <div className="text-right">
                       <p className="text-cyan-400 font-bold">
-                        ${(item.price * item.quantity).toLocaleString()}
+                        KSh {(item.price * item.quantity).toLocaleString()}
                       </p>
                     </div>
                   </div>
@@ -173,7 +173,7 @@ export default function CheckoutPage() {
               <div className="space-y-3 pt-4 border-t border-slate-700">
                 <div className="flex justify-between text-slate-300">
                   <span>Subtotal</span>
-                  <span>${cartTotal.toLocaleString()}</span>
+                  <span>KSh {cartTotal.toLocaleString()}</span>
                 </div>
                 <div className="flex justify-between text-slate-300">
                   <span>Shipping</span>
@@ -182,7 +182,7 @@ export default function CheckoutPage() {
                 <div className="flex justify-between text-xl font-bold pt-3 border-t border-slate-700">
                   <span className="text-white">Total</span>
                   <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                    ${cartTotal.toLocaleString()}
+                    KSh {cartTotal.toLocaleString()}
                   </span>
                 </div>
               </div>
