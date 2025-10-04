@@ -1,0 +1,1 @@
+pnpm create next-app@latest . --typescript --tailwind --app --no-src-dir --import-alias "@/*" --yes
