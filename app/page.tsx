@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import ProductCard from '@/components/ProductCard';
+import AIAssistant from '@/components/AIAssistant';
 
 interface Product {
   _id: string;
@@ -131,6 +132,9 @@ export default function Home() {
           <p>&copy; 2025 FutureCart. Bringing tomorrow's technology to you today.</p>
         </div>
       </footer>
+
+      {/* AI Assistant */}
+      <AIAssistant products={products} />
     </div>
   );
 }
