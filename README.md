@@ -9,6 +9,16 @@ A modern, futuristic e-commerce platform built for a hackathon, featuring cuttin
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC?style=for-the-badge&logo=tailwind-css)
 ![M-Pesa](https://img.shields.io/badge/M--Pesa-Daraja-00A86B?style=for-the-badge)
 
+---
+
+## 📸 Screenshot
+
+![FutureCart Homepage](Screenshot_20251004_135557.png)
+
+*Featuring a futuristic UI with product catalog, AI assistant, and real-time cart functionality*
+
+---
+
 ## ✨ Features
 
 ### 🛍️ E-Commerce Functionality
