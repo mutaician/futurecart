@@ -5,6 +5,7 @@ import { useCart } from '@/contexts/CartContext';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
+import PaymentModal from '@/components/PaymentModal';
 
 export default function CheckoutPage() {
   const { cart, cartTotal, clearCart } = useCart();
@@ -12,21 +13,55 @@ export default function CheckoutPage() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
   });
   const [isProcessing, setIsProcessing] = useState(false);
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
+  const [paymentData, setPaymentData] = useState<any>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!formData.phone) {
+      alert('Please enter your M-Pesa phone number');
+      return;
+    }
+
     setIsProcessing(true);
 
-    // Simulate order processing
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const response = await fetch('/api/payment/initiate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          phone: formData.phone,
+          amount: cartTotal,
+          customerName: formData.name,
+          customerEmail: formData.email,
+          cartItems: cart,
+        }),
+      });
 
-    // For hackathon: just show success and clear cart
-    alert(`🎉 Order placed successfully!\n\nThank you ${formData.name}!\nTotal: KSh ${cartTotal.toLocaleString()}\n\nA confirmation email will be sent to ${formData.email}`);
-    
+      const data = await response.json();
+
+      if (data.success) {
+        setPaymentData(data);
+        setShowPaymentModal(true);
+      } else {
+        alert(`Payment Error: ${data.error}`);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Failed to initiate payment. Please try again.');
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
+  const handlePaymentSuccess = () => {
+    setShowPaymentModal(false);
+    alert(`🎉 Payment Successful!\n\nThank you ${formData.name}!\nOrder Ref: ${paymentData.orderRef}\n\nA confirmation email will be sent to ${formData.email}`);
     clearCart();
-    setIsProcessing(false);
     router.push('/');
   };
 
@@ -120,10 +155,30 @@ export default function CheckoutPage() {
                   />
                 </div>
 
+                {/* Phone Number */}
+                <div>
+                  <label htmlFor="phone" className="block text-white font-medium mb-2">
+                    M-Pesa Phone Number *
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    required
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-cyan-500 transition-colors"
+                    placeholder="0712345678 or 254712345678"
+                  />
+                  <p className="text-slate-400 text-xs mt-1">
+                    Format: 07XXXXXXXX or 2547XXXXXXXX
+                  </p>
+                </div>
+
                 {/* Info Note */}
-                <div className="bg-cyan-500/10 border border-cyan-500/30 rounded-lg p-4">
-                  <p className="text-cyan-300 text-sm">
-                    <strong>Note:</strong> This is a demo checkout for hackathon purposes. No actual payment will be processed.
+                <div className="bg-emerald-500/10 border border-emerald-500/30 rounded-lg p-4">
+                  <p className="text-emerald-300 text-sm">
+                    <strong>🧪 Test Mode:</strong> You will be charged <strong>KSh 1</strong> for testing instead of KSh {cartTotal.toLocaleString()}. Complete M-Pesa payment with your PIN.
                   </p>
                 </div>
 
@@ -131,9 +186,18 @@ export default function CheckoutPage() {
                 <button
                   type="submit"
                   disabled={isProcessing}
-                  className="w-full py-4 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold text-lg rounded-xl shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full py-4 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-400 hover:to-emerald-500 text-white font-bold text-lg rounded-xl shadow-lg shadow-green-500/30 hover:shadow-green-500/50 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
-                  {isProcessing ? 'Processing...' : 'Place Order'}
+                  {isProcessing ? (
+                    'Initiating M-Pesa...'
+                  ) : (
+                    <>
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                      </svg>
+                      Pay with M-Pesa
+                    </>
+                  )}
                 </button>
               </form>
             </div>
@@ -198,6 +262,21 @@ export default function CheckoutPage() {
           </div>
         </div>
       </div>
+
+      {/* Payment Modal */}
+      {showPaymentModal && paymentData && (
+        <PaymentModal
+          isOpen={showPaymentModal}
+          checkoutRequestID={paymentData.checkoutRequestID}
+          orderRef={paymentData.orderRef}
+          phone={formData.phone}
+          testMode={paymentData.testMode}
+          testAmount={paymentData.testAmount}
+          actualAmount={paymentData.actualAmount}
+          onSuccess={handlePaymentSuccess}
+          onClose={() => setShowPaymentModal(false)}
+        />
+      )}
     </div>
   );
 }
